@@ -1,0 +1,210 @@
+/* You can add global styles to this file, and also import other style files */
+/* ── Design Tokens ── */
+:root {
+  /* Pfirsich Palette */
+  --peach-50: #fff0eb;
+  --peach-100: #ffd4c2;
+  --peach-200: #ffb599;
+  --peach-400: #ff8c69;
+  --peach-600: #e06040;
+  --peach-800: #c25a3a;
+
+  /* Akzent Teal — für "erledigt" / Erfolg */
+  --teal-50: #e8faf5;
+  --teal-400: #5bcfb5;
+  --teal-800: #2a7d6a;
+
+  /* Semantische Farben */
+  --bg: #fffaf7; /* Seitenhintergrund */
+  --surface: #ffffff; /* Cards, Inputs */
+  --border: #f5d5c5; /* alle Borders */
+  --text: #2c1810; /* Haupttext */
+  --muted: #9b6e5a; /* Sekundärtext, Labels */
+
+  /* Status */
+  --success-bg: #e8f5e9;
+  --success-text: #2e7d32;
+  --warning-bg: #fff3e0;
+  --warning-text: #e65100;
+  --error-bg: #ffebee;
+  --error-text: #c62828;
+
+  /* Border Radius */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 99px;
+
+  /* Spacing */
+  --space-xs: 6px;
+  --space-sm: 10px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  /* Schatten */
+  --shadow-card: 0 2px 12px rgba(194, 90, 58, 0.08);
+  --shadow-lg: 0 8px 28px rgba(194, 90, 58, 0.14);
+
+  /* Übergänge */
+  --transition: 0.15s ease;
+}
+
+/* ── Reset & Base ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: 'Georgia', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── Typografie ── */
+h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+h2 {
+  font-size: 18px;
+  font-weight: 700;
+}
+h3 {
+  font-size: 15px;
+  font-weight: 600;
+}
+p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Labels & Badges — immer sans-serif */
+label,
+.label,
+.badge,
+.pill,
+button,
+input,
+nav {
+  font-family: system-ui, sans-serif;
+}
+
+/* ── Utility Classes ── */
+.card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.pill-peach {
+  background: var(--peach-50);
+  color: var(--peach-800);
+}
+.pill-teal {
+  background: var(--teal-50);
+  color: var(--teal-800);
+}
+.pill-today {
+  background: var(--peach-400);
+  color: white;
+}
+.pill-warning {
+  background: var(--warning-bg);
+  color: var(--warning-text);
+}
+
+.btn-primary {
+  background: var(--peach-400);
+  color: white;
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 14px var(--space-md);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: opacity var(--transition);
+  font-family: system-ui, sans-serif;
+}
+.btn-primary:hover {
+  opacity: 0.9;
+}
+.btn-primary:active {
+  opacity: 0.8;
+  transform: scale(0.99);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 8px var(--space-md);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all var(--transition);
+  font-family: system-ui, sans-serif;
+}
+.btn-ghost:hover {
+  background: var(--peach-50);
+  color: var(--peach-800);
+  border-color: var(--peach-100);
+}
+
+/* ── Layout ── */
+.page-container {
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 0 0 80px;
+  min-height: 100vh;
+}
+
+/* ── Inputs ── */
+input[type='text'],
+input[type='date'],
+input[type='email'],
+textarea {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  font-size: 15px;
+  color: var(--text);
+  outline: none;
+  width: 100%;
+  transition: border-color var(--transition);
+  font-family: 'Georgia', serif;
+}
+input:focus,
+textarea:focus {
+  border-color: var(--peach-400);
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+}

@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Person {
+  id        String   @id @default(uuid())
+  name      String
+  emoji     String   @default("🎂")
+  notes     String?
+  budget    Int?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  birthdays Birthday[]
+  gifts     Gift[]
+}
+
+model Birthday {
+  id                  String   @id @default(uuid())
+  date                DateTime
+  reminderDaysBefore  Int      @default(7)
+  remindGift          Boolean  @default(false)
+  remindGiftDays      Int      @default(14)
+  remindCard          Boolean  @default(false)
+  remindCardDays      Int      @default(5)
+  personId            String
+  person              Person   @relation(fields: [personId], references: [id], onDelete: Cascade)
+}
+
+model Gift {
+  id        String   @id @default(uuid())
+  title     String
+  price     Int?
+  bought    Boolean  @default(false)
+  isWish    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  personId  String
+  person    Person   @relation(fields: [personId], references: [id], onDelete: Cascade)
+}
