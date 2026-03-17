@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&display=swap');
+
 /* ══════════════════════════════════════
    Design Tokens — Birthday App
    ══════════════════════════════════════ */
@@ -80,6 +82,7 @@
   --font-body: 'Georgia', serif;
   --font-ui: system-ui, -apple-system, sans-serif;
   --font-mono: 'Courier New', monospace;
+  --font-head: 'Syne', sans-serif;
 
   /* ── Layout ── */
   --max-width: 430px; /* mobile-first max */
@@ -121,6 +124,7 @@ body {
 h1 {
   font-size: var(--text-xl);
   font-weight: var(--weight-bold);
+  font-family: var(--font-head);
   line-height: var(--leading-tight);
   letter-spacing: -0.5px;
 }
@@ -128,6 +132,7 @@ h1 {
 h2 {
   font-size: var(--text-lg);
   font-weight: var(--weight-bold);
+  font-family: var(--font-head);
   line-height: var(--leading-tight);
 }
 
@@ -180,6 +185,7 @@ nav,
 .page-container {
   max-width: var(--max-width);
   margin: 0 auto;
+  margin-top: var(--space-xl);
   padding: 0 0 calc(var(--nav-height) + var(--space-md));
   min-height: 100vh;
 }
@@ -229,6 +235,10 @@ nav,
 .btn-primary:active {
   opacity: 0.8;
   transform: scale(0.99);
+}
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .btn-ghost {
@@ -313,6 +323,7 @@ nav,
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
+  margin-bottom: var(--space-md);
 }
 
 .form-label {
@@ -339,7 +350,7 @@ textarea {
   outline: none;
   width: 100%;
   transition: border-color var(--transition);
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   line-height: var(--leading-normal);
   min-height: 44px;
 }
@@ -363,7 +374,19 @@ textarea {
   font-family: var(--font-ui);
   font-size: var(--text-xs);
   color: var(--error-text);
-  margin-top: var(--space-2xs);
+  margin-bottom: var(--space-md);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ══════════════════════════════════════
@@ -409,4 +432,23 @@ textarea {
 }
 .nav-item.active .nav-label {
   color: var(--peach-800);
+}
+
+/* ══════════════════════════════════════
+   Loading-Spinner
+   ══════════════════════════════════════ */
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

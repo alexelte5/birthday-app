@@ -1,0 +1,28 @@
+.emoji-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-xs);
+}
+
+.emoji-option {
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--border);
+  background: var(--surface);
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.emoji-option:hover {
+  border-color: var(--peach-200);
+  background: var(--peach-50);
+}
+
+.emoji-option.selected {
+  border-color: var(--peach-400);
+  background: var(--peach-50);
+}
