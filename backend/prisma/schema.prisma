@@ -8,28 +8,27 @@ datasource db {
 }
 
 model Person {
-  id        String   @id @default(uuid())
+  id        String     @id @default(uuid())
   name      String
-  emoji     String   @default("🎂")
+  emoji     String     @default("🎂")
   notes     String?
   budget    Int?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
   birthdays Birthday[]
   gifts     Gift[]
 }
 
 model Birthday {
-  id                  String   @id @default(uuid())
-  date                DateTime
-  reminderDaysBefore  Int      @default(7)
-  remindGift          Boolean  @default(false)
-  remindGiftDays      Int      @default(14)
-  remindCard          Boolean  @default(false)
-  remindCardDays      Int      @default(5)
-  personId            String
-  person              Person   @relation(fields: [personId], references: [id], onDelete: Cascade)
+  id                 String   @id @default(uuid())
+  date               DateTime
+  reminderDaysBefore Int      @default(7)
+  remindGift         Boolean  @default(false)
+  remindGiftDays     Int      @default(14)
+  remindCard         Boolean  @default(false)
+  remindCardDays     Int      @default(5)
+  personId           String
+  person             Person   @relation(fields: [personId], references: [id], onDelete: Cascade)
 }
 
 model Gift {
